@@ -1,0 +1,310 @@
+========================================
+DJANGO SETUP & COMMANDS
+========================================
+
+----------------------------------------
+1. ACTIVATE VIRTUAL ENVIRONMENT
+----------------------------------------
+
+Using Conda:
+    conda activate venv
+
+Verify Django Installation:
+    python
+
+Inside Python shell:
+    import django
+    django.__version__
+
+Exit Python shell:
+    quit()
+
+----------------------------------------
+2. CREATE A DJANGO PROJECT
+----------------------------------------
+
+Create a new Django project:
+    django-admin startproject project_name
+
+Navigate to the project directory:
+    cd project_name
+
+Project Structure:
+    project_name/
+    │
+    ├── manage.py
+    ├── project_name/
+    │   ├── __init__.py
+    │   ├── settings.py
+    │   ├── urls.py
+    │   ├── asgi.py
+    │   └── wsgi.py
+
+----------------------------------------
+3. CREATE A DJANGO APP
+----------------------------------------
+
+Create a new app:
+    python manage.py startapp app_name
+
+App Structure:
+    app_name/
+    │
+    ├── migrations/
+    ├── admin.py
+    ├── apps.py
+    ├── models.py
+    ├── tests.py
+    ├── views.py
+    └── urls.py (create manually if needed)
+
+----------------------------------------
+4. REGISTER APP
+----------------------------------------
+
+Open:
+    settings.py
+
+Add the app to INSTALLED_APPS:
+
+    INSTALLED_APPS = [
+        ...
+        'app_name',
+    ]
+
+----------------------------------------
+5. RUN DEVELOPMENT SERVER
+----------------------------------------
+
+Default server:
+    python manage.py runserver
+
+Run on custom port:
+    python manage.py runserver 5000
+
+Run on custom host and port:
+    python manage.py runserver 0.0.0.0:5000
+
+----------------------------------------
+6. DATABASE MIGRATIONS
+----------------------------------------
+
+Create migration files:
+    python manage.py makemigrations
+
+Apply migrations:
+    python manage.py migrate
+
+View migration status:
+    python manage.py showmigrations
+
+Create migrations for a specific app:
+    python manage.py makemigrations app_name
+
+----------------------------------------
+7. DJANGO SHELL
+----------------------------------------
+
+Open Django shell:
+    python manage.py shell
+
+Exit shell:
+    exit()
+
+Example:
+
+    from app_name.models import Student
+    Student.objects.all()
+
+----------------------------------------
+8. CREATE SUPERUSER
+----------------------------------------
+
+Create admin user:
+    python manage.py createsuperuser
+
+Follow prompts:
+    Username
+    Email
+    Password
+
+----------------------------------------
+9. ACCESS ADMIN PANEL
+----------------------------------------
+
+Start server:
+    python manage.py runserver
+
+Open browser:
+    http://127.0.0.1:8000/admin
+
+Login using superuser credentials.
+
+----------------------------------------
+10. COLLECT STATIC FILES
+----------------------------------------
+
+Collect static files:
+    python manage.py collectstatic
+
+----------------------------------------
+11. USEFUL COMMANDS
+----------------------------------------
+
+Check project issues:
+    python manage.py check
+
+Display all available commands:
+    python manage.py help
+
+Show SQL for migrations:
+    python manage.py sqlmigrate app_name migration_number
+
+Flush database:
+    python manage.py flush
+
+----------------------------------------
+12. CRUD OPERATIONS
+----------------------------------------
+
+Model Example:
+
+    from django.db import models
+
+    class Recipe(models.Model):
+        title = models.CharField(max_length=100)
+        description = models.TextField()
+
+----------------------------------------
+CREATE
+----------------------------------------
+
+    Recipe.objects.create(
+        title="Pasta",
+        description="Delicious pasta recipe"
+    )
+
+OR
+
+    recipe = Recipe(
+        title="Pasta",
+        description="Delicious pasta recipe"
+    )
+    recipe.save()
+
+----------------------------------------
+READ
+----------------------------------------
+
+Get all records:
+    Recipe.objects.all()
+
+Get single record:
+    Recipe.objects.get(id=1)
+
+Filter records:
+    Recipe.objects.filter(title="Pasta")
+
+First record:
+    Recipe.objects.first()
+
+Last record:
+    Recipe.objects.last()
+
+----------------------------------------
+UPDATE
+----------------------------------------
+
+    recipe = Recipe.objects.get(id=1)
+    recipe.title = "White Sauce Pasta"
+    recipe.save()
+
+----------------------------------------
+DELETE
+----------------------------------------
+
+Delete one record:
+
+    recipe = Recipe.objects.get(id=1)
+    recipe.delete()
+
+Delete multiple records:
+
+    Recipe.objects.filter(title="Pasta").delete()
+
+Delete all records:
+
+    Recipe.objects.all().delete()
+
+----------------------------------------
+13. COMMON DJANGO FILES
+----------------------------------------
+
+models.py
+    Database models/tables
+
+views.py
+    Business logic and request handling
+
+urls.py
+    URL routing
+
+templates/
+    HTML files
+
+static/
+    CSS, JavaScript, Images
+
+admin.py
+    Admin panel configuration
+
+forms.py
+    Form handling
+
+----------------------------------------
+14. DJANGO DEVELOPMENT FLOW
+----------------------------------------
+
+1. Create Project
+2. Create App
+3. Register App
+4. Create Models
+5. Make Migrations
+6. Apply Migrations
+7. Create Views
+8. Configure URLs
+9. Create Templates
+10. Test in Browser
+11. Add Admin Panel
+12. Build CRUD Features
+
+========================================
+DJANGO LEARNING ROADMAP
+========================================
+
+1. Django Basics
+2. URL Routing
+3. Views
+4. Templates
+5. Static Files
+6. Models
+7. ORM Queries
+8. Forms
+9. CRUD Applications
+10. Authentication & Authorization
+11. Class-Based Views
+12. File Uploads
+13. Django Messages Framework
+14. Pagination
+15. Django REST Framework (DRF)
+16. API Authentication
+17. Deployment
+
+Projects:
+- Recipe Management App
+- Blog Application
+- Student Management System
+- Authentication System
+- Notes App
+- E-Commerce Backend
+- REST API Projects
